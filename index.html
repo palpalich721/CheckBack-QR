@@ -1,0 +1,42 @@
+<head>
+<title>QR code for CheckBack</title>
+<script type="text/javascript" src="qrcode.js"></script>
+</head>
+<body>
+ <div id="qrcode" align="center" height="100%">
+
+<script type="text/javascript">
+
+function addZero(digits_length, source){
+    var text = source + '';
+    while(text.length < digits_length)
+        text = '0' + text;
+    return text;
+}
+
+function randomInteger(min, max) {
+  // получить случайное число от (min-0.5) до (max+0.5)
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
+
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	
+});
+
+	
+	let t = String(new Date().getFullYear()) + String(addZero(2,new Date().getMonth() + 1)) + String(addZero(2,new Date().getDate()-1)) + "T" + addZero(2,randomInteger(0, 23)) + addZero(2,randomInteger(0, 60));
+	let s = randomInteger(1, 9999);
+	let fn = randomInteger(1111111111111111, 9999999999999999);
+	let i = randomInteger(1, 9);
+	let fp = randomInteger(1111111111, 9999999999);
+	let n = randomInteger(1, 9);
+	
+	let str = "t=" + t + "&s=" + s +".00&fn=" + fn + "&i=" + i + "&fp=" + fp + "&n=" + n;
+	document.write(str);
+	qrcode.makeCode(str);
+
+
+</script>
+</div>
+</body>
