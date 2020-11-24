@@ -4,7 +4,7 @@
 var abc = "🤍💖💛❣💞🧡💜💗💓💕💚❤💙💌✨🌟";
         var rs = "";
         while (rs.length < 500) {
-            rs += abc[Math.floor(Math.random() * abc.length)];
+            rs += [abc][Math.floor(Math.random() * abc.length)];
         }
         document.write(rs);
 
